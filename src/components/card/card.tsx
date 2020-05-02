@@ -1,35 +1,34 @@
 import React from 'react';
 import Chip from '../chip';
+import { Draggable } from 'react-beautiful-dnd';
 
 type Tag = {
   name: string
 }
 
 type TaskProps = {
+  id: string
+  index: number
   title: string
-  description: string
-  tags: Tag[]
 }
 
 const Card = (task: TaskProps) => {
-  const { title, description, tags } = task;
+  const { id, index, title } = task;
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{title}</div>
-        <p className="text-gray-700 text-base">
-          {description}
-        </p>
-      </div>
-      { 
-        tags && tags.length && <div className="px-6 py-4">
-          { tags.map((tag: Tag )=> {
-            return <Chip name={tag.name} />
-          })}
+    <Draggable draggableId={id} index={index}>
+      {(provided) => (
+        <div className="max-2-sm rounded overflow-hidden shadow-lg bg-white m-4"
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">{title}</div>
+          </div>
         </div>
-      }
-    </div>
+      )}
+    </Draggable>
   );
 };
 
