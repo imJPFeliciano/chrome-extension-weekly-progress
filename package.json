@@ -39,8 +39,10 @@
     ]
   },
   "devDependencies": {
+    "@types/react-beautiful-dnd": "^12.1.2",
     "autoprefixer": "^9.7.6",
     "postcss-cli": "^7.1.1",
+    "react-beautiful-dnd": "^13.0.0",
     "tailwindcss": "^1.4.4"
   }
 }
